@@ -1,25 +1,12 @@
 <html>
 <!DOCTYPE html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>sfshd logos</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-
-	<!-- link rel="stylesheet" href="/css/normalize.min.css">
-	<link rel="stylesheet" href="/css/main2019.css" -->
-	<link rel="preload" href="https://fonts.googleapis.com/css?family=Bitter:300,400,700|Montserrat:300,400,700&amp;display=swap" as="style">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:300,400,700|Montserrat:300,400,700&amp;display=swap">
-
-	<style>
+  <style>
 		html, body, h1,h2,h3,p { font-family: sans-serif; }
 		.element {
-			width: 180px; 
-			margin: 1em; 
-			border: 1px solid #eee; 
-			border-radius: 1em;
-			padding: 1em;
+      max-width:150px;			
+			margin: 1em;
+			
 		}
 		
 		.golden {
@@ -27,9 +14,13 @@
                 radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 		}
 	</style>
-	
-	<svg height="-150" width="-150">
+
+<svg height="-150" width="-150">
 		<style>
+      svg svg {
+            overflow: visible;
+          background: transparent;
+        }
 			svg path { fill : inherit; }
 		    #star {  }
 		    .base { text-shadow: 1px 1px 5px black; font-weight: normal; font: italic 36px 'Georgia',serif; }
@@ -41,21 +32,19 @@
 			    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); }
 		</style>
 		<defs>
-		   <radialGradient id="goldenboy1" cx="70%" cy="70%" r="70%" fx="70%" fy="70%">
-
-		      <stop offset="0%" style="stop-color:#8A6E2F; stop-opacity:1.0" />
-		      <stop offset="8%" style="stop-color:#8A6E2F; stop-opacity:1.0" />
-		      <stop offset="30%" style="stop-color:#9f7928; stop-opacity:1.0" />
-		      <stop offset="40%" style="stop-color:#FDB931; stop-opacity:1.0" />
-		      <stop offset="80%" style="stop-color:#FEDB37; stop-opacity:0.8" />
-			
-		</radialGradient>
-		   <radialGradient id="goldenboy2" cx="0%" cy="0%" r="70%" fx="0%" fy="0%">
-		      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
-		      <stop offset="8%" style="stop-color:#FFFFAC;stop-opacity:1" />
-		      <stop offset="25%" style="stop-color:#D1B464;stop-opacity:1" />			   
-		      <stop offset="62.5%" style="stop-color:#5d4a1f;stop-opacity:1" />
-		      <stop offset="100%" style="stop-color:#5d4a1f;stop-opacity:1" />
+		   <radialGradient id="goldenboylr" cx="100%" cy="100%" r="100%" fx="100%" fy="100%">
+		      <stop offset="0%" style="stop-color:#FEDB37; stop-opacity:1.0" />
+		      <stop offset="8%" style="stop-color:#FDB931; stop-opacity:1.0" />
+		      <stop offset="45%" style="stop-color:#9f7928; stop-opacity:0.8" />
+		      <stop offset="70%" style="stop-color:#8A6E2F; stop-opacity:0.5" />
+		      <stop offset="80%" style="stop-color:#8A6E2F; stop-opacity:0.0" />			
+		  </radialGradient>
+		   <radialGradient id="goldenboyul" cx="0%" cy="0%" r="100%" fx="0%" fy="0%">
+		      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1.0" />
+		      <stop offset="8%" style="stop-color:#FFFFAC;stop-opacity:1.0" />
+		      <stop offset="25%" style="stop-color:#D1B464;stop-opacity:1.0" />			   
+		      <stop offset="62.5%" style="stop-color:#5d4a1f;stop-opacity:0.7" />
+		      <stop offset="100%" style="stop-color:#5d4a1f;stop-opacity:0.9" />
 		    </radialGradient>
 		    <filter id="dropshadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 		     <feComponentTransfer in="SourceAlpha">
@@ -69,44 +58,80 @@
 		   </filter>
 			
 		 </defs>
-		<symbol id="star">
-			<polygon stroke="black" fill="url(#goldenboy2)" stroke-opacity="0.5" 
-				 transform="scale(1.25, 1.25) translate(-44, -48)" 
+		<mask id="star">
+       <rect x="0" y="0" width="100%" height="100%" fill="black" />
+			<polygon stroke="white" fill="white" stroke-opacity="1.0" 
+				 transform=" rotate(12) scale(1.4, 1.4) translate(-37, -60)" 
 				 points="140,100 149.55328773463305,123.86360565146569 124.93959207434935,131.2732592987212 112.2386513675973,153.6210351700003 91.09916264174743,138.99711648727293 65.70806089776966,143.00073153574164 63.96124528390324,117.35534956470232 45,100 63.96124528390323,82.64465043529768 65.70806089776966,56.999268464258364 91.09916264174741,61.00288351272705 112.23865136759729,46.3789648299997 124.93959207434933,68.7267407012788 149.55328773463305,76.1363943485343 140,99.99999999999999">
 			</polygon>
-			<polygon stroke="black" fill="url(#goldenboy1)" stroke-opacity="0.5" 
+<!-- 			<polygon stroke="black" fill="url(#goldenboyul)" stroke-opacity="0.5" 
 				 transform="scale(1.25, 1.25) translate(-44, -48)" 
 				 points="140,100 149.55328773463305,123.86360565146569 124.93959207434935,131.2732592987212 112.2386513675973,153.6210351700003 91.09916264174743,138.99711648727293 65.70806089776966,143.00073153574164 63.96124528390324,117.35534956470232 45,100 63.96124528390323,82.64465043529768 65.70806089776966,56.999268464258364 91.09916264174741,61.00288351272705 112.23865136759729,46.3789648299997 124.93959207434933,68.7267407012788 149.55328773463305,76.1363943485343 140,99.99999999999999">
-			</polygon>
-		</symbol>
-		
+			</polygon> -->
+		</mask>
+  
+     <g id = "expanse_lowerright" >
+       <rect x="0" width="150" height="150" rx="0" fill="url(#goldenboylr)" fill-opacity="1.0" />
+  </g>
+
+       <g id = "expanse_upperleft" transform="translate(-150)">
+       <rect x="0" width="150" height="150" rx="0" fill="url(#goldenboyul)" fill-opacity="1.0" />
+<!--         <circle cx="0" cy="0" r="150" fill="url(#goldenboy1)"  /> -->
+  </g>
+
+  
+
 		<symbol id="logo">
 		  <circle cx="70" cy="65" r="49" fill="#3a5333"  filter="url(#dropshadow)"  />
 		  <text x="78" y="85" fill="#9ea380" class="base small">sd</text>
 		  <text x="29" y="88" fill="#c1be8c" class="base big kerned">sf</text>
 		</symbol>
 	</svg>
-	
+
+  </head>
 <body>
 <div class="hero clearfix" style="background: url(bg-hero-2019-09.v1) no-repeat; width: 1200px; height: 380px;">
 	<h3>sfshd logo scratchpad</h3>
-	<div class="banner logo" style="display:flex;">
+	<div class="banner logo" style="display:flex;flex-flow:  row wrap">
 		<div class="element">
 			<svg height="150" width="150" >
 				<use xlink:href="#logo" x="0" y="0" fill:"#3a5333">
 			</svg>	
-				<p>kerned & shadowed "sf", flat "sd"</p>
+				<p>"sf": tightened up (kerned), drop shadow, "sd" : no shadow</p>
 		</div>
-		<div class="element">
-			<svg height="150" width="150" >
-				<use xlink:href="#star" x="0" y="0">
-			</svg>	
-				<p>star x</p>
-		</div>
-		<div class="element golden" style="height:150px;">
 		
-			<p>golden gradient</p>
-		</div>
+
+     
+        <div class = "element">
+          <svg height="150" width="150" >
+            
+            
+             <rect x="0" width="150" height="150" rx="0" fill="url(#goldenboyul)"    />
+             <rect x="0" width="150" height="150" rx="0" fill="url(#goldenboylr)"  />
+          </svg>
+            <p>svg golden gradient
+      </div>
+          <div class = "element">
+          <svg height="150" width="150" >
+            
+<!--             <use xlink:href="#expanse_lowerright" x="0" y="0" width="150" fill-opacity="0.5"> -->
+<!--             <use xlink:href="#expanse_upperleft" x="150" y="0" width="150" opacity="0.5" fill-opacity="0.5"> -->
+<!--             <circle cx="75" cy="75" r="75" fill="url(#goldenboyul)"   mask="url(#star)" />
+            <circle cx="75" cy="75" r="75" fill="url(#goldenboylr)"   mask="url(#star)" />
+             -->
+        <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboyul)"   mask="url(#star)" />
+             <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboylr)" mask="url(#star)" filter="url(#dropshadow)" />
+
+				    <use xlink:href="#logo" x="5" y="5" fill:"#3a5333">
+		
+          </svg>
+            <p>badge logo
+      </div>
+<!-- 		<div class="element golden" style="height:150px;width:150px;">
+		
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><p>css reference</p>
+		</div> -->
+          
 	</div>
 </div>
 
