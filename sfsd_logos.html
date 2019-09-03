@@ -23,62 +23,55 @@
 		}
 	</style>
 	
+	<svg height="-150" width="-150">
+		<style>
+		    #star {  }
+		    .base { text-shadow: 1px 1px 5px black; font-weight: normal; font: italic 36px 'Georgia',serif; }
+		    .small {  font-size: 36px;  text-shadow:none; }
+		    .big {  font-size: 79px; }
+		    .kerned { letter-spacing: -0.05em;  } 
+		    .golden { 
+			    fill: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+			    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); }
+		</style>
+		<defs>
+		    <filter id="dropshadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+		     <feComponentTransfer in="SourceAlpha">
+			 <feFuncR type="discrete" tableValues="0.96"/>
+			 <feFuncG type="discrete" tableValues="0.96"/>
+			 <feFuncB type="discrete" tableValues="0.42"/>
+		     </feComponentTransfer>
+		     <feGaussianBlur stdDeviation="0"/>
+		     <feOffset dx="0" dy="0" result="shadow"/>
+		     <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+		   </filter>
+		 </defs>
+		<polygon id="star" stroke="black" class="golden" stroke-opacity="0.8" transform="scale(1.25, 1.25) translate(-44, -48)" fill-opacity="1.0"  points="140,100 149.55328773463305,123.86360565146569 124.93959207434935,131.2732592987212 112.2386513675973,153.6210351700003 91.09916264174743,138.99711648727293 65.70806089776966,143.00073153574164 63.96124528390324,117.35534956470232 45,100 63.96124528390323,82.64465043529768 65.70806089776966,56.999268464258364 91.09916264174741,61.00288351272705 112.23865136759729,46.3789648299997 124.93959207434933,68.7267407012788 149.55328773463305,76.1363943485343 140,99.99999999999999"></polygon>
+		<g id="logo">
+		  <circle cx="70" cy="65" r="49" fill="#3a5333"  filter="url(#dropshadow)"  />
+		  <text x="78" y="85" fill="#9ea380" class="base small">sd</text>
+		  <text x="29" y="88" fill="#c1be8c" class="base big kerned">sf</text>
+		</g>
+	</svg>
+	
 <body>
-
-<div id="body" class="clearfix">
-		<div class="hero clearfix" style="background: url(bg-hero-2019-09.v1) no-repeat; width: 1200px; height: 380px;">
-		
-			<svg height="-150" width="-150">
-				<style>
-		            #star {  }
-			    .base { text-shadow: 1px 1px 5px black; font-weight: normal; font: italic 36px 'Georgia',serif; }
-			    .small {  font-size: 36px;  text-shadow:none; }
-			    .big {  font-size: 79px; }
-			    .kerned { letter-spacing: -0.05em;  } 
-			    .golden { 
-				    fill: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-               			    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); }
-			</style>
-			<defs>
-			    <filter id="dropshadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-			     <feComponentTransfer in="SourceAlpha">
-			         <feFuncR type="discrete" tableValues="0.96"/>
-			         <feFuncG type="discrete" tableValues="0.96"/>
-			         <feFuncB type="discrete" tableValues="0.42"/>
-   		       	     </feComponentTransfer>
-			     <feGaussianBlur stdDeviation="0"/>
-			     <feOffset dx="0" dy="0" result="shadow"/>
-			     <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-			   </filter>
-			 </defs>
-				<polygon id="star" stroke="black" class="golden" stroke-opacity="0.8" transform="scale(1.25, 1.25) translate(-44, -48)" fill-opacity="1.0"  points="140,100 149.55328773463305,123.86360565146569 124.93959207434935,131.2732592987212 112.2386513675973,153.6210351700003 91.09916264174743,138.99711648727293 65.70806089776966,143.00073153574164 63.96124528390324,117.35534956470232 45,100 63.96124528390323,82.64465043529768 65.70806089776966,56.999268464258364 91.09916264174741,61.00288351272705 112.23865136759729,46.3789648299997 124.93959207434933,68.7267407012788 149.55328773463305,76.1363943485343 140,99.99999999999999"></polygon>
-				<g id="logo">
-				  <circle cx="70" cy="65" r="49" fill="#3a5333"  filter="url(#dropshadow)"  />
-				  <text x="78" y="85" fill="#9ea380" class="base small">sd</text>
-				  <text x="29" y="88" fill="#c1be8c" class="base big kerned">sf</text>
-				</g>
-			</svg>
-		<div class="banner logo" style="display:flex;">
-			
-			<div class="element">
-				<svg height="150" width="150" >
-					<use href="#logo">
-				</svg>	
-				<p>kerned shadowed sf, flat sd
-			</div>
-			<div class="element">
-				<svg height="150" width="150" >
-					<use href="#star">
-				</svg>	
-				<p>star
-			</div>
-				
-      
+<div class="hero clearfix" style="background: url(bg-hero-2019-09.v1) no-repeat; width: 1200px; height: 380px;">
+	<h2>sfshd logo scratchpad</h2>
+	<div class="banner logo" style="display:flex;">
+		<div class="element">
+			<svg height="150" width="150" >
+				<use href="#logo">
+			</svg>	
+			<p>kerned & shadowed "sf", flat "sd"
 		</div>
-		
-		
+		<div class="element">
+			<svg height="150" width="150" >
+				<use href="#star">
+			</svg>	
+			<p>star
 		</div>
 	</div>
-  
+</div>
+
 </body>
 </html>
