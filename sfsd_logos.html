@@ -22,9 +22,9 @@
           background: transparent;
         }
 			svg path { fill : inherit; }
-		    #star {  }
-		    .base { text-shadow: 1px 1px 5px black; font-weight: normal; font: italic 36px 'Georgia',serif; }
-		    .small {  font-size: 36px;  text-shadow:none; }
+        .shadow {text-shadow: 1px 1px 5px black;}
+		    .base {  font-weight: normal; font: italic 36px 'Georgia',serif; }
+		    .small {  font-size: 36px;  }
 		    .big {  font-size: 79px; }
 		    .kerned { letter-spacing: -0.05em;  } 
 		    .goldenfill { 
@@ -32,6 +32,16 @@
 			    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); }
 		</style>
 		<defs>
+      <filter id="mydropshadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+		     <feComponentTransfer in="SourceAlpha">
+           <feFuncR type="discrete" tableValues="0.96"/>
+           <feFuncG type="discrete" tableValues="0.96"/>
+           <feFuncB type="discrete" tableValues="0.42"/>
+		     </feComponentTransfer>
+		     <feGaussianBlur stdDeviation="5"/>
+		     <feOffset dx="0" dy="0" result="shadow"/>
+		     <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+		   </filter>
 		   <radialGradient id="goldenboylr" cx="100%" cy="100%" r="100%" fx="100%" fy="100%">
 		      <stop offset="0%" style="stop-color:#FEDB37; stop-opacity:1.0" />
 		      <stop offset="8%" style="stop-color:#FDB931; stop-opacity:1.0" />
@@ -46,16 +56,7 @@
 		      <stop offset="62.5%" style="stop-color:#5d4a1f;stop-opacity:0.7" />
 		      <stop offset="100%" style="stop-color:#5d4a1f;stop-opacity:0.9" />
 		    </radialGradient>
-		    <filter id="dropshadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-		     <feComponentTransfer in="SourceAlpha">
-			 <feFuncR type="discrete" tableValues="0.96"/>
-			 <feFuncG type="discrete" tableValues="0.96"/>
-			 <feFuncB type="discrete" tableValues="0.42"/>
-		     </feComponentTransfer>
-		     <feGaussianBlur stdDeviation="0"/>
-		     <feOffset dx="0" dy="0" result="shadow"/>
-		     <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-		   </filter>
+		    
 			
 		 </defs>
 		<mask id="star">
@@ -82,7 +83,7 @@
   
 
 		<symbol id="logo">
-		  <circle cx="70" cy="65" r="49" fill="#3a5333"  filter="url(#dropshadow)"  />
+		  <circle cx="70" cy="65" r="49" fill="#3a5333"    />
 		  <text x="78" y="85" fill="#9ea380" class="base small">sd</text>
 		  <text x="29" y="88" fill="#c1be8c" class="base big kerned">sf</text>
 		</symbol>
@@ -92,17 +93,44 @@
 <body>
 <div class="hero clearfix" style="background: url(bg-hero-2019-09.v1) no-repeat; width: 1200px; height: 380px;">
 	<h3>sfshd logo scratchpad</h3>
-	<div class="banner logo" style="display:flex;flex-flow:  row wrap">
-		<div class="element">
-			<svg height="150" width="150" >
-				<use xlink:href="#logo" x="0" y="0" fill:"#3a5333">
-			</svg>	
-				<p>"sf": tightened up (kerned), drop shadow, "sd" : no shadow</p>
-		</div>
+	<ol class="banner logo" style="display:flex;flex-flow:  row wrap">
 		
+    
+    <li class="element">
+      <img src = "//vann.github.io/sfshd-logo-orig.png" width="119" height="107">
+      <p>original (bitmap)
+    </li>
+    <li class="element">
+			<svg height="150" width="150" >
+<!-- 				<use xlink:href="#logo" x="0" y="0" fill:"#3a5333"> -->
+         <circle cx="70" cy="65" r="49" fill="#3a5333"  />
+        <text x="78" y="85" fill="#9ea380" class="base small ">sd</text>
+        <text x="29" y="88" fill="#c1be8c" class="base big shadow">sf</text>
+			</svg>	
+				<p>"sf":  drop shadow, "sd" : no shadow</p>
+		</li>
+    <li class="element">
+			<svg height="150" width="150" >
+<!-- 				<use xlink:href="#logo" x="0" y="0" fill:"#3a5333"> -->
+         <circle cx="70" cy="65" r="49" fill="#3a5333"   />
+        <text x="78" y="85" fill="#9ea380" class="base small ">sd</text>
+        <text x="29" y="88" fill="#c1be8c" class="base big kerned shadow">sf</text>
+			</svg>	
+				<p>"sf": kerned, drop shadow, "sd" : no shadow</p>
+		</li>
+		<li class="element">
+			<svg height="150" width="150" >
+<!-- 				<use xlink:href="#logo" x="0" y="0" fill:"#3a5333"> -->
+        <!-- filter="url(#mydropshadow)" -->
+         <circle cx="70" cy="65" r="49" fill="#3a5333"   />
+        <text x="78" y="85" fill="#9ea380" class="base small shadow ">sd</text>
+        <text x="29" y="88" fill="#c1be8c" class="base big kerned shadow">sf</text>
+			</svg>	
+				<p>"sf": kerned, drop shadow, "sd" : drop shadow</p>
+		</li>
 
      
-        <div class = "element">
+<!--         <li class = "element">
           <svg height="150" width="150" >
             
             
@@ -110,29 +138,42 @@
              <rect x="0" width="150" height="150" rx="0" fill="url(#goldenboylr)"  />
           </svg>
             <p>svg golden gradient
-      </div>
-          <div class = "element">
+      </li> -->
+          <li class = "element">
           <svg height="150" width="150" >
-            
-<!--             <use xlink:href="#expanse_lowerright" x="0" y="0" width="150" fill-opacity="0.5"> -->
-<!--             <use xlink:href="#expanse_upperleft" x="150" y="0" width="150" opacity="0.5" fill-opacity="0.5"> -->
-<!--             <circle cx="75" cy="75" r="75" fill="url(#goldenboyul)"   mask="url(#star)" />
-            <circle cx="75" cy="75" r="75" fill="url(#goldenboylr)"   mask="url(#star)" />
-             -->
-        <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboyul)"   mask="url(#star)" />
-             <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboylr)" mask="url(#star)" filter="url(#dropshadow)" />
-
-				    <use xlink:href="#logo" x="5" y="5" fill:"#3a5333">
+         
+            <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboyul)"   mask="url(#star)" />
+             <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboylr)" mask="url(#star)"  />
+          <text x="78" y="85" fill="#9ea380" class="base small shadow ">sd</text>
+        <text x="29" y="88" fill="#c1be8c" class="base big kerned shadow">sf</text>
+             
+<!-- 				    <use xlink:href="#logo" x="5" y="5" fill:"#3a5333"> -->
 		
           </svg>
-            <p>badge logo
-      </div>
+            <p>badge logo concept
+      </li>
+    <li class = "element">
+          <svg height="150" width="150" >
+         
+            <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboyul)"   mask="url(#star)"  />
+             <rect x="0" y="0" width="150" height="150" rx="0" fill="url(#goldenboylr)" mask="url(#star)"  />
+         
+              <g transform="translate(5 9)">
+             <circle cx="70" cy="65" r="49" fill="#3a5333" fill-opacity="0.9"  />
+        <text x="78" y="85" fill="#9ea380" class="base small shadow ">sd</text>
+        <text x="29" y="88" fill="#c1be8c" class="base big kerned shadow">sf</text>
+            </g>
+<!-- 				    <use xlink:href="#logo" x="5" y="9" fill:"#3a5333" fill-opacity="0.5"> -->
+		
+          </svg>
+            <p>badge logo concept w circle
+      </li>
 <!-- 		<div class="element golden" style="height:150px;width:150px;">
 		
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><p>css reference</p>
 		</div> -->
           
-	</div>
+	</ol>
 </div>
 
 </body>
