@@ -1,75 +1,159 @@
-<!--
-   viewHomeInOverlay.html  version 1.9.1
-   
-   Sweet Home 3D, Copyright (c) 2024 Space Mushrooms <info@sweethome3d.com>
-   
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>View home with Sweet Home 3D HTML5 Viewer</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Combi Consulting · Product Systems</title>
+   <style>
+      :root {
+         --bg: #0b0c0f;
+         --fg: #f5f5f5;
+         --muted: #8c8c8c;
+         --accent: #62f2c1;
+         --card: rgba(255, 255, 255, 0.04);
+      }
 
-<!--  Copy the following scripts in your page header -->
-<script type="text/javascript" src="lib/big.min.js"></script>
-<script type="text/javascript" src="lib/gl-matrix-min.js"></script>
-<script type="text/javascript" src="lib/jszip.min.js"></script>
-<script type="text/javascript" src="lib/core.min.js"></script>
-<script type="text/javascript" src="lib/geom.min.js"></script>
-<script type="text/javascript" src="lib/stroke.min.js"></script>
-<script type="text/javascript" src="lib/batik-svgpathparser.min.js"></script>
-<script type="text/javascript" src="lib/jsXmlSaxParser.min.js"></script>
-<script type="text/javascript" src="lib/triangulator.min.js"></script>
-<script type="text/javascript" src="lib/viewmodel.min.js"></script>
-<script type="text/javascript" src="lib/viewhome.min.js"></script>
+      * {
+         box-sizing: border-box;
+      }
 
-<style type="text/css">
-/* The class of components handled by the viewer */
-.viewerComponent {
-}
-</style>
+      body {
+         margin: 0;
+         min-height: 100vh;
+         font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+         background: radial-gradient(circle at 15% 20%, rgba(98, 242, 193, 0.12), transparent 45%),
+                           radial-gradient(circle at 85% 0%, rgba(98, 242, 193, 0.15), transparent 40%),
+                           var(--bg);
+         color: var(--fg);
+         padding: clamp(1.5rem, 4vw, 4rem);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      main {
+         width: min(960px, 100%);
+         display: flex;
+         flex-direction: column;
+         gap: 2.5rem;
+      }
+
+      header {
+         display: flex;
+         flex-direction: column;
+         gap: 0.75rem;
+      }
+
+      h1 {
+         font-size: clamp(2.5rem, 5vw, 4rem);
+         letter-spacing: -1px;
+         margin: 0;
+      }
+
+      p {
+         margin: 0;
+         color: var(--muted);
+         line-height: 1.5;
+      }
+
+      section {
+         padding: 1.75rem;
+         border: 1px solid rgba(255, 255, 255, 0.08);
+         border-radius: 1rem;
+         background: var(--card);
+         backdrop-filter: blur(6px);
+      }
+
+      h2 {
+         margin-top: 0;
+         margin-bottom: 1rem;
+         font-size: 1rem;
+         text-transform: uppercase;
+         letter-spacing: 0.25rem;
+         color: var(--muted);
+      }
+
+      ul {
+         list-style: square;
+         margin: 0;
+         padding-left: 1.4rem;
+         display: flex;
+         flex-direction: column;
+         gap: 0.6rem;
+      }
+
+      a {
+         color: var(--accent);
+         text-decoration: none;
+      }
+
+      a:hover {
+         text-decoration: underline;
+      }
+
+      .cta {
+         display: inline-flex;
+         align-items: center;
+         gap: 0.35rem;
+         border: 1px solid rgba(255, 255, 255, 0.25);
+         padding: 0.6rem 0.95rem;
+         border-radius: 999px;
+         margin-top: 1.5rem;
+      }
+
+      footer {
+         font-size: 0.85rem;
+         color: var(--muted);
+         display: flex;
+         justify-content: space-between;
+         flex-wrap: wrap;
+         gap: 1rem;
+      }
+
+      .ghost-link {
+         position: fixed;
+         bottom: 6px;
+         right: 10px;
+         width: 10px;
+         height: 10px;
+         opacity: 0;
+      }
+
+      .ghost-link:focus {
+         opacity: 1;
+         outline: 1px dashed var(--accent);
+      }
+   </style>
 </head>
-
 <body>
-<div>
-  <!-- Copy the following button in your page -->
-  <!-- Mouse and keyboard navigation explained at 
-       http://sweethome3d.cvs.sf.net/viewvc/sweethome3d/SweetHome3D/src/com/eteks/sweethome3d/viewcontroller/resources/help/en/editing3DView.html 
-       You may also switch between aerial view and virtual visit with the space bar -->
-  <!-- For browser compatibility, see http://caniuse.com/webgl -->
-  <button onclick='viewHomeInOverlay("vanntest3.zip", 
-              {roundsPerMinute:    1,                              /* Rotation speed of the animation launched once home is loaded in rounds per minute, no animation if missing */ 
-               widthByHeightRatio: 4/3,                            /* Size ratio of the displayed canvas */
-               navigationPanel: "none",                            /* Displayed navigation arrows, "none" or "default" for default one or an HTML string containing elements with data-simulated-key 
-                                                                      attribute set "UP", "DOWN", "LEFT", "RIGHT"... to replace the default navigation panel, "none" if missing */ 
-               aerialViewButtonText: "Aerial view",                /* Text displayed for aerial view radio button, no radio buttons if missing */ 
-               virtualVisitButtonText: "Virtual visit",            /* Text displayed for virtual visit radio button, no radio buttons if missing */
-            /* level: "Roof", */                                   /* Uncomment to select the displayed level, default level if missing */
-            /* selectableLevels: ["Ground floor", "Roof"], */      /* Uncomment to choose the list of displayed levels, no select component if empty array */
-            /* camera: "Exterior view", */                         /* Uncomment to select a camera, default camera if missing */
-            /* selectableCameras: ["Exterior view", "Kitchen"], */ /* Uncomment to choose the list of displayed cameras, no camera if missing */
-               activateCameraSwitchKey: true,                      /* Switch between top view / virtual visit with space bar if not false or missing */
-               viewerControlsAdditionalHTML: "",                   /* Additional HTML text appended to controls displayed below the canvas 3D, by default empty */
-               readingHomeText: "Reading",                         /* Comment displayed while reading home */
-               readingModelText: "Model",                          /* Comment displayed while reading models */
-               noWebGLSupportError: "No WebGL support"             /* Error message displayed if the browser do not support WebGL */
-              })'>View home</button>
-</div>
+   <main>
+      <header>
+         <p>Combi Consulting · Product Systems</p>
+         <h1>Web app consulting</h1>
+         <p>Welcome</p>
+      </header>
 
-<div style="position: absolute; bottom: 5px; text-align: center; width: 95%; z-index: -1">
-  <a href="http://www.sweethome3d.com">Sweet Home 3D</a> HTML5 Viewer / Version 1.9.1 - Distributed under GNU General Public License
-</div>
+      <section>
+         <h2>Public Projects</h2>
+         <ul>
+            <li>...</li>
+         </ul>
+         <a class="cta" href="https://www.linkedin.com/in/vannm" target="_blank" rel="noreferrer">LinkedIn / vannm ↗</a>
+      </section>
+
+      <section>
+         <h2>Services</h2>
+         <ul>
+            <li>...</li>
+         </ul>
+      </section>
+
+      <footer>
+         <span>vann@combiconsulting.com</span>
+         <span></span>
+      </footer>
+   </main>
+
+   <a class="ghost-link" href="private-projects.html" aria-label="local projects">.</a>
 </body>
 </html>
